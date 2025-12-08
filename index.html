@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Destinos Mundo Travel - Agencia de Viajes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+/* === COLORES PRINCIPALES === */
+:root {
+    --color1: #ff7b00;     /* naranja brillante */
+    --color2: #00c3ff;     /* celeste */
+    --color3: #ff0095;     /* fucsia */
+    --color4: #222;        /* negro suave */
+    --color5: #fff;        /* blanco */
+    --gradient: linear-gradient(45deg, var(--color1), var(--color2), var(--color3));
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #fafafa;
+}
+
+/* === MENÚ === */
+nav {
+    background: var(--gradient);
+    padding: 15px;
+    text-align: center;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* === CARRUSEL === */
+.carousel {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+.carousel img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    animation: slide 15s infinite;
+}
+@keyframes slide {
+    0% {transform: translateX(0);}
+    33% {transform: translateX(-100%);}
+    66% {transform: translateX(-200%);}
+    100% {transform: translateX(0);}
+}
+
+/* === TÍTULOS === */
+h2 {
+    text-align: center;
+    background: var(--gradient);
+    color: white;
+    padding: 10px;
+}
+
+/* === SECCIÓN DE EQUIPO === */
+.equipo {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+.equipo div {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+    text-align: center;
+}
+
+/* === PAQUETES === */
+.paquetes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+.paquete {
+    width: 280px;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0 10px #ccc;
+}
+.paquete h3 {
+    color: var(--color1);
+}
+
+/* === CONTADORES === */
+.contadores {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    background: var(--color2);
+    padding: 20px;
+    color: white;
+}
+.contador {
+    text-align: center;
+    font-size: 30px;
+}
+
+/* === FORMULARIO === */
+form {
+    width: 50%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+}
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+button {
+    background: var(--color1);
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+button:hover {
+    background: var(--color3);
+}
+
+/* === FOOTER === */
+footer {
+    background: var(--gradient);
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+</style>
+
+</head>
+<body>
+
+<!-- ========================= MENÚ ======================== -->
+<nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#equipo">Equipo</a>
+    <a href="#paquetes">Paquetes</a>
+    <a href="#estadisticas">Estadísticas</a>
+    <a href="#contacto">Contacto</a>
+</nav>
+
+<!-- ========================= CARRUSEL ======================== -->
+<div class="carousel" id="inicio">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="">
+    <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98" alt="">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="">
+</div>
+
+<!-- ========================= EQUIPO ======================== -->
+<h2 id="equipo">Nuestro Equipo</h2>
+
+<div class="equipo">
+    <div>
+        <img src="https://i.pravatar.cc/100" alt="">
+        <h3>Ana Torres</h3>
+        <p>Directora General</p>
+    </div>
+    <div>
+        <img src="https://i.pravatar.cc/101" alt="">
+        <h3>Luis García</h3>
+        <p>Agente de Reservas</p>
+    </div>
+    <div>
+        <img src="https://i.pravatar.cc/102" alt="">
+        <h3>Marta López</h3>
+        <p>Guía Turística</p>
+    </div>
+    <div>
+        <img src="https://i.pravatar.cc/103" alt="">
+        <h3>Daniel Ruiz</h3>
+        <p>Coordinador de Viajes</p>
+    </div>
+</div>
+
+<!-- ========================= PAQUETES ======================== -->
+<h2 id="paquetes">Paquetes Turísticos</h2>
+
+<div class="paquetes">
+    <div class="paquete">
+        <h3>Caribe Todo Incluido – 7 días</h3>
+        <p>Hotel 5 estrellas, bebidas ilimitadas, deportes acuáticos.</p>
+        <strong>$899 USD</strong>
+    </div>
+    <div class="paquete">
+        <h3>Europa Express – 10 días</h3>
+        <p>España – Francia – Italia con tours guiados.</p>
+        <strong>$1490 USD</strong>
+    </div>
+    <div class="paquete">
+        <h3>Aventura en Perú – 5 días</h3>
+        <p>Machu Picchu, gastronomía y tours.</p>
+        <strong>$620 USD</strong>
+    </div>
+    <div class="paquete">
+        <h3>Crucero por el Mediterráneo – 8 días</h3>
+        <p>Todo incluido + entretenimiento.</p>
+        <strong>$1099 USD</strong>
+    </div>
+</div>
+
+<!-- ========================= CONTADORES ======================== -->
+<h2 id="estadisticas">Estadísticas</h2>
+
+<div class="contadores">
+    <div>
+        <div class="contador" data-num="12500">0</div>
+        <p>Clientes satisfechos</p>
+    </div>
+    <div>
+        <div class="contador" data-num="3800">0</div>
+        <p>Paquetes vendidos</p>
+    </div>
+    <div>
+        <div class="contador" data-num="15">0</div>
+        <p>Años de experiencia</p>
+    </div>
+    <div>
+        <div class="contador" data-num="40">0</div>
+        <p>Destinos disponibles</p>
+    </div>
+</div>
+
+<script>
+/* === ANIMACIÓN DE CONTADORES === */
+let counters = document.querySelectorAll(".contador");
+counters.forEach(counter => {
+    let update = () => {
+        let target = +counter.getAttribute("data-num");
+        let value = +counter.innerText;
+        let speed = target / 50;
+        if (value < target) {
+            counter.innerText = Math.ceil(value + speed);
+            setTimeout(update, 50);
+        } else {
+            counter.innerText = target;
+        }
+    };
+    update();
+});
+</script>
+
+<!-- ========================= FORMULARIO ======================== -->
+<h2 id="contacto">Formulario de Contacto</h2>
+
+<form>
+    <input type="text" placeholder="Nombre completo" required>
+    <input type="email" placeholder="Correo electrónico" required>
+    <input type="tel" placeholder="Teléfono" required>
+    <textarea placeholder="Destino de interés"></textarea>
+    <button>Enviar</button>
+</form>
+
+<!-- ========================= WIDGETS ======================== -->
+<h2>Mapa de Ubicación</h2>
+
+<div style="text-align:center;">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18..." width="80%" height="300" style="border:0;" allowfullscreen=""></iframe>
+</div>
+
+<h2>Video Promocional</h2>
+<div style="text-align:center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+</div>
+
+<!-- ========================= CHATBOT ======================== -->
+<script>
+window.addEventListener("load", function(){
+    alert("👋 Hola, soy tu asistente de viajes. ¿En qué puedo ayudarte?");
+});
+</script>
+
+<!-- ========================= FOOTER ======================== -->
+<footer>
+    © 2025 Destinos Mundo Travel | Agencia de Viajes – Grupo 4
+</footer>
+
+</body>
+</html>
