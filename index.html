@@ -8,11 +8,11 @@
 <style>
 /* === COLORES PRINCIPALES === */
 :root {
-    --color1: #ff7b00;     /* naranja brillante */
-    --color2: #00c3ff;     /* celeste */
-    --color3: #ff0095;     /* fucsia */
-    --color4: #222;        /* negro suave */
-    --color5: #fff;        /* blanco */
+    --color1: #ff7b00;
+    --color2: #00c3ff;
+    --color3: #ff0095;
+    --color4: #222;
+    --color5: #fff;
     --gradient: linear-gradient(45deg, var(--color1), var(--color2), var(--color3));
 }
 
@@ -20,18 +20,23 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     background: #fafafa;
+    scroll-behavior: smooth;
 }
 
-/* === MENÚ === */
+/* === MENÚ FIJO === */
 nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
     background: var(--gradient);
     padding: 15px;
     text-align: center;
+    z-index: 1000;
 }
 nav a {
     color: white;
     text-decoration: none;
-    margin: 0 20px;
+    margin: 0 15px;
     font-size: 18px;
     font-weight: bold;
 }
@@ -39,35 +44,86 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* === CARRUSEL === */
+/* === CARRUSEL CON TEXTO === */
+.carousel-container {
+    position: relative;
+    margin-top: 70px; /* espacio para el menú */
+}
 .carousel {
     width: 100%;
     height: 400px;
     overflow: hidden;
     position: relative;
+    display: flex;
 }
 .carousel img {
     width: 100%;
     height: 400px;
     object-fit: cover;
-    animation: slide 15s infinite;
+    flex-shrink: 0;
+    animation: slide 30s infinite;
 }
+
 @keyframes slide {
-    0% {transform: translateX(0);}
-    33% {transform: translateX(-100%);}
-    66% {transform: translateX(-200%);}
+    0%, 10% {transform: translateX(0);}
+    33%, 43% {transform: translateX(-100%);}
+    66%, 76% {transform: translateX(-200%);}
     100% {transform: translateX(0);}
 }
 
-/* === TÍTULOS === */
+/* TEXTO ENCIMA DEL CARRUSEL */
+.carousel-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 55px;
+    font-weight: bold;
+    padding: 20px 40px;
+    background: rgba(0,0,0,0.45);
+    border-radius: 12px;
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.9);
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    animation: escribir 4s steps(30) 1, parpadeo 0.75s step-end infinite;
+}
+
+@keyframes escribir {
+    from { width: 0; }
+    to { width: 100%; }
+}
+@keyframes parpadeo {
+    50% { border-color: transparent; }
+}
+
+/* === TÍTULOS CON ANIMACIÓN === */
 h2 {
     text-align: center;
     background: var(--gradient);
     color: white;
     padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: .15em solid white;
+    width: 0;
+    animation: escribirTitulo 2s forwards, parpadeoTitulo 0.75s step-end infinite;
+}
+@keyframes escribirTitulo {
+    from { width: 0; }
+    to { width: 100%; }
+}
+@keyframes parpadeoTitulo {
+    50% { border-color: transparent; }
 }
 
-/* === SECCIÓN DE EQUIPO === */
+/* === SECCIONES === */
+section {
+    padding: 40px 20px;
+}
+
+/* === EQUIPO === */
 .equipo {
     display: flex;
     justify-content: center;
@@ -149,129 +205,112 @@ footer {
     color: white;
 }
 </style>
-
 </head>
 <body>
 
-<!-- ========================= MENÚ ======================== -->
+<!-- === MENÚ FIJO === -->
 <nav>
     <a href="#inicio">Inicio</a>
     <a href="#quienes">Quiénes Somos</a>
-    <a href="#mvv">Misión y Visión</a>
+    <a href="#mvv">Misión/Visión/Valores</a>
     <a href="#equipo">Equipo</a>
     <a href="#paquetes">Paquetes</a>
     <a href="#estadisticas">Estadísticas</a>
     <a href="#contacto">Contacto</a>
 </nav>
 
-<!-- ========================= CARRUSEL ======================== -->
-<div class="carousel" id="inicio">
-    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="">
-    <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98" alt="">
-    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="">
+<!-- === CARRUSEL === -->
+<div class="carousel-container" id="inicio">
+    <div class="carousel">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+        <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb">
+    </div>
+    <div class="carousel-title">Destinos Mundo Travel</div>
 </div>
 
-<!-- ========================= QUIÉNES SOMOS ======================== -->
+<!-- === QUIÉNES SOMOS === -->
 <h2 id="quienes">¿Quiénes Somos?</h2>
-
+<section>
 <div style="padding: 20px; width: 80%; margin: auto; text-align: center; background: white; border-radius: 10px; box-shadow: 0 0 10px #ccc;">
     <p style="font-size: 18px; line-height: 1.6;">
         En <strong>Destinos Mundo Travel</strong> somos una agencia dedicada a crear experiencias únicas de viaje. 
         Nuestro equipo está conformado por profesionales apasionados por el turismo, comprometidos con ofrecer 
-        atención personalizada y soluciones que se adapten a las necesidades de cada cliente.
+        atención personalizada.
     </p>
 </div>
+</section>
 
-<!-- ========================= MISIÓN, VISIÓN Y VALORES ======================== -->
+<!-- === MISIÓN VISIÓN VALORES === -->
 <h2 id="mvv">Misión • Visión • Valores</h2>
-
-<div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; padding: 20px;">
-
+<section style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; padding: 20px;">
     <div style="width: 300px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #ccc;">
         <h3 style="color: var(--color2); text-align:center;">Misión</h3>
-        <p>
-            Brindar servicios turísticos de calidad, garantizando seguridad, confort y experiencias memorables 
-            que superen las expectativas de cada viajero.
-        </p>
+        <p>Brindar servicios turísticos de calidad, experiencias memorables.</p>
     </div>
-
     <div style="width: 300px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #ccc;">
         <h3 style="color: var(--color1); text-align:center;">Visión</h3>
-        <p>
-            Ser reconocidos como una agencia líder a nivel internacional, destacándonos por nuestra innovación, 
-            excelencia y servicio humano en el sector turístico.
-        </p>
+        <p>Ser una agencia líder a nivel internacional.</p>
     </div>
-
     <div style="width: 300px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #ccc;">
         <h3 style="color: var(--color3); text-align:center;">Valores</h3>
-        <p>
-            • Compromiso<br>
-            • Honestidad<br>
-            • Responsabilidad<br>
-            • Calidad en el servicio<br>
-            • Pasión por el turismo
-        </p>
+        <p>Compromiso, Honestidad, Pasión por el turismo.</p>
     </div>
+</section>
 
-</div>
-
-<!-- ========================= EQUIPO ======================== -->
+<!-- === EQUIPO === -->
 <h2 id="equipo">Nuestro Equipo</h2>
-
-<div class="equipo">
+<section class="equipo">
     <div>
-        <img src="https://i.pravatar.cc/100" alt="">
+        <img src="https://i.pravatar.cc/100">
         <h3>Ana Torres</h3>
         <p>Directora General</p>
     </div>
     <div>
-        <img src="https://i.pravatar.cc/101" alt="">
+        <img src="https://i.pravatar.cc/101">
         <h3>Luis García</h3>
         <p>Agente de Reservas</p>
     </div>
     <div>
-        <img src="https://i.pravatar.cc/102" alt="">
+        <img src="https://i.pravatar.cc/102">
         <h3>Marta López</h3>
         <p>Guía Turística</p>
     </div>
     <div>
-        <img src="https://i.pravatar.cc/103" alt="">
+        <img src="https://i.pravatar.cc/103">
         <h3>Daniel Ruiz</h3>
         <p>Coordinador de Viajes</p>
     </div>
-</div>
+</section>
 
-<!-- ========================= PAQUETES ======================== -->
+<!-- === PAQUETES === -->
 <h2 id="paquetes">Paquetes Turísticos</h2>
-
-<div class="paquetes">
+<section class="paquetes">
     <div class="paquete">
         <h3>Caribe Todo Incluido – 7 días</h3>
-        <p>Hotel 5 estrellas, bebidas ilimitadas, deportes acuáticos.</p>
+        <p>Hotel 5 estrellas, bebidas ilimitadas.</p>
         <strong>$899 USD</strong>
     </div>
     <div class="paquete">
         <h3>Europa Express – 10 días</h3>
-        <p>España – Francia – Italia con tours guiados.</p>
+        <p>España – Francia – Italia.</p>
         <strong>$1490 USD</strong>
     </div>
     <div class="paquete">
         <h3>Aventura en Perú – 5 días</h3>
-        <p>Machu Picchu, gastronomía y tours.</p>
+        <p>Machu Picchu y gastronomía.</p>
         <strong>$620 USD</strong>
     </div>
     <div class="paquete">
-        <h3>Crucero por el Mediterráneo – 8 días</h3>
-        <p>Todo incluido + entretenimiento.</p>
+        <h3>Crucero Mediterráneo – 8 días</h3>
+        <p>Todo incluido.</p>
         <strong>$1099 USD</strong>
     </div>
-</div>
+</section>
 
-<!-- ========================= CONTADORES ======================== -->
+<!-- === ESTADÍSTICAS === -->
 <h2 id="estadisticas">Estadísticas</h2>
-
-<div class="contadores">
+<section class="contadores">
     <div>
         <div class="contador" data-num="12500">0</div>
         <p>Clientes satisfechos</p>
@@ -288,13 +327,12 @@ footer {
         <div class="contador" data-num="40">0</div>
         <p>Destinos disponibles</p>
     </div>
-</div>
+</section>
 
 <script>
 /* === ANIMACIÓN DE CONTADORES === */
-let counters = document.querySelectorAll(".contador");
-counters.forEach(counter => {
-    let update = () => {
+document.querySelectorAll(".contador").forEach(counter => {
+    function update() {
         let target = +counter.getAttribute("data-num");
         let value = +counter.innerText;
         let speed = target / 50;
@@ -304,14 +342,14 @@ counters.forEach(counter => {
         } else {
             counter.innerText = target;
         }
-    };
+    }
     update();
 });
 </script>
 
-<!-- ========================= FORMULARIO ======================== -->
+<!-- === FORMULARIO === -->
 <h2 id="contacto">Formulario de Contacto</h2>
-
+<section>
 <form>
     <input type="text" placeholder="Nombre completo" required>
     <input type="email" placeholder="Correo electrónico" required>
@@ -319,27 +357,15 @@ counters.forEach(counter => {
     <textarea placeholder="Destino de interés"></textarea>
     <button>Enviar</button>
 </form>
+</section>
 
-<!-- ========================= WIDGETS ======================== -->
-<h2>Mapa de Ubicación</h2>
-
-<div style="text-align:center;">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18..." width="80%" height="300" style="border:0;" allowfullscreen=""></iframe>
-</div>
-
+<!-- === VIDEO PROMOCIONAL === -->
 <h2>Video Promocional</h2>
-<div style="text-align:center;">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-</div>
+<section style="text-align:center;">
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=-JGanqjhYJk" allowfullscreen></iframe>
+</section>
 
-<!-- ========================= CHATBOT ======================== -->
-<script>
-window.addEventListener("load", function(){
-    alert("👋 Hola, soy tu asistente de viajes. ¿En qué puedo ayudarte?");
-});
-</script>
-
-<!-- CHATBOT ChatGPT (PEGA TU ID AQUÍ SI YA LO TIENES) -->
+<!-- === CHATBOT === -->
 <script>
   window.embeddedChatbotConfig = {
       chatbotId: "TU-ID-AQUI",
@@ -348,11 +374,11 @@ window.addEventListener("load", function(){
 </script>
 <script src="https://www.chatgpt.com/embed.js" defer></script>
 
-<!-- ========================= FOOTER ======================== -->
 <footer>
     © 2025 Destinos Mundo Travel | Agencia de Viajes – Grupo 4
 </footer>
 
 </body>
-
 </html>
+
+
